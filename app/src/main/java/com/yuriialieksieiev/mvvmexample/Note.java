@@ -26,17 +26,19 @@ public class Note
         return id;
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
-    public int getPriority() {
+    int getPriority() {
         return priority;
     }
+
+
 
     @Override
     public String toString() {

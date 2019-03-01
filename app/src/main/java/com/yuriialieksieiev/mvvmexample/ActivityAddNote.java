@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 public class ActivityAddNote extends AppCompatActivity {
 
     public static final String EXTRA_ID = "com.yuriialieksieiev.mvvmexample.extra.id";
