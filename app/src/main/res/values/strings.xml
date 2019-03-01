@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MVVMexample</string>
+    <string name="hintTitle">Title...</string>
+    <string name="hintDescription">Description...</string>
+    <string name="priority">Priority:</string>
 </resources>
