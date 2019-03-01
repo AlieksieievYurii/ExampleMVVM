@@ -13,7 +13,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ActivityAddNote">
             <intent-filter>
-                <action android:name="com.yuriialieksieiev.mvvmexample.activity.addnote"/>
+                <action android:name="com.yuriialieksieiev.mvvmexample.activity.addeditnote"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>

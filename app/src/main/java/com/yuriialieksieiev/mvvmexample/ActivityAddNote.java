@@ -14,6 +14,7 @@ import java.util.Objects;
 
 public class ActivityAddNote extends AppCompatActivity {
 
+    public static final String EXTRA_ID = "com.yuriialieksieiev.mvvmexample.extra.id";
     public static final String EXTRA_TITLE = "com.yuriialieksieiev.mvvmexample.extra.title";
     public static final String EXTRA_DESCRIPTION = "com.yuriialieksieiev.mvvmexample.extra.description";
     public static final String EXTRA_PRIORITY = "com.yuriialieksieiev.mvvmexample.extra.priority";
@@ -33,7 +34,14 @@ public class ActivityAddNote extends AppCompatActivity {
         npPriority.setMinValue(1);
         npPriority.setMaxValue(10);
 
-        setTitle("Add Note");
+        if(getIntent().hasExtra(EXTRA_ID))
+        {
+            setTitle("Edit Note");
+            edtTitle.setText(getIntent().getStringExtra(EXTRA_TITLE));
+            edtDescription.setText(getIntent().getStringExtra(EXTRA_DESCRIPTION));
+            npPriority.setValue(getIntent().getIntExtra(EXTRA_PRIORITY,1));
+        }else
+            setTitle("Add Note");
     }
 
     @Override
@@ -66,11 +74,20 @@ public class ActivityAddNote extends AppCompatActivity {
             return;
         }
 
+
         Intent resultIntent = new Intent();
-        resultIntent.setAction(MainActivity.ACTION_ADD_NOTE);
         resultIntent.putExtra(EXTRA_TITLE,title);
         resultIntent.putExtra(EXTRA_DESCRIPTION,description);
         resultIntent.putExtra(EXTRA_PRIORITY,priority);
+
+        int id = getIntent().getIntExtra(EXTRA_ID,-1);
+
+        if(id != -1)
+        {
+            resultIntent.setAction(MainActivity.ACTION_EDITED_NOTE);
+            resultIntent.putExtra(EXTRA_ID,id);
+        }else
+            resultIntent.setAction(MainActivity.ACTION_ADD_NOTE);
 
         sendBroadcast(resultIntent);
         finish();
